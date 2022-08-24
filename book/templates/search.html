@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}| {{ title }}{% endblock title %}
+{% load static %}
+{% block content %}
+
+<div class="album py-5 bg">
+  <div class="container">
+    <button type="button" class="btn btn-secondary mb-3">
+      Книги <span class="badge bg-primary"> {{ books.count }}</span>
+    </button>
+        {% for item in books %}
+        <div class="shadow p-3 mb-5 bg-white rounded">
+        <div class="row">
+        <div class="col-2">
+          <div class="shadow bg-white "  style="width: 9rem;">
+            <img src="{{ item.image.url }}" height="180px" class="card-img-top" alt="...">
+          </div>
+        </div>
+        <div class="col-10">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <a class="text-decoration-none text" href="{% url 'avtors' id=item.author %}">{{ item.author }}</a>
+            <p>{{ item.desc }}</p>
+            <div><a class="text-decoration-none text-info" href="{% url 'fiter_book' id=item.category.id %}">Жанры: {{ item.category.title }}</a></div>
+            <a href="{{ item.file.url }}" target="_blank" class="btn btn-sm btn-outline-secondary my-3">Читать книгу...</a>
+          </div>
+        </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+
+  <div class="container">
+    {% for item in authors %}
+<div class="mb-3 m-5 shadow-none p-3 mb-5 bg-light rounded" style="max-width: 940px;">
+    <div class="row p-4">
+      <div class="col-3">
+        {% if item.img_Avtor %}
+            <img src="{{ item.img_Avtor.url }}" class="img-fluid rounded-start" width="200px" alt="...">
+        {% else %}
+            <img src="{% static 'down/image/author.webp'%}" width="200px" class="img-fluid rounded-start" alt="...">
+        {% endif %}
+        <p class="text-center">({{ item.year_avtor}}г)</p>
+      </div>
+      <div class="col-9">
+        <div class="card-body">
+          <a class="text-decoration-none text" href="{% url 'avtors' id=item.info %}">{{ item.title }}</a>
+          <p class="card-text">{{ item.avtor }}</p> 
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+  
+{% endblock content %}

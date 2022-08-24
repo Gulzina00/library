@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}| Личный кабинет{% endblock title %}
+{% block content %}
+
+<div class="conatiner m-4">
+    <div class="row p-3">
+      <h3 class="mb-5">Добро пожаловать {{ request.user.first_name }} {{ request.user.last_name }}</h3>
+      {% for item in books %}
+      <div class="col">
+        <div class="card" style="width: 12rem;">
+          <a href="{% url 'item_books' id=item.id %}"><img src="{{ item.image.url }}" alt="" class="w-100"></a>
+          <p class="card-text"><a href="{% url 'item_books' id=item.id %}">{{ item.title }}</a> </p>
+          
+          <p class="card-text"><a href="{% url 'item_books' id=item.id %}">{{ item.desc }}</a> </p>
+          <p class="card-text"><a href="{% url 'item_books' id=item.id %}">{{ item.date }}</a> </p>
+          <p class="card-text"><a href="{% url 'item_books' id=item.id %}">{{ item.author }}</a> </p>
+          <div>Категория: {{ item.category.title }}</div>
+
+          {% comment %} <a href="{{ item.file.url }}" target="_blank" class="btn btn-sm btn-outline-secondary my-3">Читать книгу...</a> {% endcomment %}
+
+        </div>
+        <div class="card-body">
+        {% comment %} <h6><a href="{{ item.file.url }}" target="_blank" class=" btn-outline-secondary my-3">{{ item.title }}</a></h6> {% endcomment %}
+        {% comment %} <a class="text-decoration-none text" href="{% url 'avtors' id=item.author %}">{{ item.author }}</a> {% endcomment %}
+      </div> 
+      </div>
+      {% endfor %}
+    </div>
+   </div>
+
+  <div class="panel p-3"><a href="{% url 'create_books' %}">Добавить<i class="fa-solid fa-circle-plus"></i></a></div>
+
+{% endblock content %}

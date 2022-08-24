@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="album py-5 bg">
+<div class="container">
+  <button type="button" class="btn btn-secondary mb-3">
+    Книги <span class="badge bg-primary"> {{ books.count }}</span>
+  </button>
+      {% for item in books %}
+      <div class="shadow p-3 mb-5 bg-white rounded">
+      <div class="row">
+      <div class="col-2">
+        <div class="shadow bg-white "  style="width: 9rem;">
+          <img src="{{ item.image.url }}" height="180px" class="card-img-top" alt="...">
+        </div>
+      </div>
+      <div class="col-10">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <a class="text-decoration-none text" href="{% url 'avtors' id=item.author %}">{{ item.author }}</a>
+          <p>{{ item.desc }}</p>
+          <div><a class="text-decoration-none text-info" href="{% url 'fiter_book' id=item.category.id %}">Жанры: {{ item.category.title }}</a></div>
+          <a href="{{ item.file.url }}" target="_blank" class="btn btn-sm btn-outline-secondary my-3">Читать книгу...</a>
+          <div class="float-end text-muted">{{ item.date }}</div><br>
+
+        </div>
+      </div>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+
+{% comment %} <div class="album py-5 bg-light">
+  <div class="container">  
+    <div class="row">
+      {% for item in books %}
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="{{ item.image.url }}" alt="" class="w-100">
+              <div class="card-body">
+                <p class="card-text">{{ item.title }} {{ item.id }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="{{ item.file.url }}" target="_blank" class="btn btn-sm btn-outline-secondary">View</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+{% endblock content %}

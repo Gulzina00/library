@@ -1,0 +1,58 @@
+{% load static %}
+<div class="bg-light">
+    <div class="container">
+      <div class="row py-2">
+        <div class="col">
+         <div class="row">
+          {% if request.user.is_authenticated %}
+          <div class="col-2 py-2 nav">
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ request.user.username }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a href="" class="dropdown-item">Мой профиль</a></li>
+              <li><a href="{% url 'my_books'%}" class="dropdown-item">Личный кабинет</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a href="{% url 'logout' %}" class="dropdown-item">Выход</a></li>
+            </ul>
+            </li>        
+          </div>
+          {% else %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Вход</a></li>
+          {% comment %} <div class="col-2 py-2">
+            <a class="nav-item"><a class="nav-link text-secondary" href="">Регистрация</a></a>
+          </div> {% endcomment %}
+          {% endif %}
+         </div>
+        </div>
+        <div class="col">
+          <img src="{% static 'down/image/logo1.png'%}" class="rounded mx-auto d-block " width="70" alt="...">
+        </div>
+        <div class="col col-lg-4">
+          <form action="{% url 'search_books' %}" method="GET" class="d-flex p-2">
+            <input class="form-control me-2" type="search" placeholder="Поиск книг..." aria-label="Search" name="search">
+            <button class="btn btn-outline-success" type="submit">Поиск</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <ul class="nav justify-content-center bg-primary">
+      <li class="nav-item">
+        <a class="nav-link text-light" aria-current="page" href="{% url 'home' %}">Главная</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{% url 'books' %}">Книги</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{% url 'category'  %}">Жанры</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active text-light" href="{% url 'authors' %}">Авторы</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active text-light" href="{% url 'aboute' %}">О нас</a>
+      </li>
+    </ul>

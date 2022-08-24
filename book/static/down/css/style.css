@@ -1,0 +1,18 @@
+.carousel-item1{
+    background-image: url('../image/back-book3.png');
+    background-size: cover;
+    height: 300px;
+}
+
+.carousel-item2{
+    background-image: url('../image/back-books.jpg');
+    background-size: cover;
+    height: 300px;
+}
+
+.carousel-item3{
+    background-image: url('../image/phone.jpg');
+    background-size: cover;
+    height: 300px;
+}
+

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="album py-5 bg">
+  <div class="container">
+    <button type="button" class="btn btn-secondary mb-3">
+      Книги <span class="badge bg-primary"> {{ books.count }}</span>
+    </button>
+        {% for item in books %}
+        <div class="shadow p-3 mb-5 bg-white rounded">
+        <div class="row">
+        <div class="col-2">
+          <div class="shadow bg-white "  style="width: 9rem;">
+            <img src="{{ item.image.url }}" height="180px" class="card-img-top" alt="...">
+          </div>
+        </div>
+        <div class="col-10">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <a class="text-decoration-none text" href="{% url 'avtors' id=item.author %}">{{ item.author }}</a>
+            <p>{{ item.desc }}</p>
+            <div><a class="text-decoration-none text-info" href="{% url 'fiter_book' id=item.category.id %}">Жанры: {{ item.category.title }}</a></div>
+            <a href="{{ item.file.url }}" target="_blank" class="btn btn-sm btn-outline-secondary my-3">Читать книгу...</a>
+          </div>
+        </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+  
+{% endblock content %}

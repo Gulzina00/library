@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-3 mb-3">
+  <h1>{{ title }}</h1>
+  <div class="row">
+    
+    <div class="col-md-4">
+      <div class="list-group">
+        <div class="card-header">
+          <h5>Категортии</h5>
+        </div>
+        {% for item in categories %}
+          <a href="{% url 'fiter_book' id=item.id %}" class="list-group-item list-group-item-action">{{ item.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      {% for item in book %}
+      <div class="shadow p-3 mb-5 bg-white rounded">
+      <div class="row">
+      <div class="col-3">
+        <div class="shadow bg-white "  style="width: 9rem;">
+          <img src="{{ item.image.url }}" height="180px" class="card-img-top" alt="...">
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <a class="text-decoration-none text" href="{% url 'avtors' id=item.author %}">{{ item.author }}</a>
+          <p>{{ item.desc }}</p>
+          <div><a class="text-decoration-none text-info" href="{% url 'fiter_book' id=item.category.id %}">Жанры: {{ item.category.title }}</a></div>
+          <a href="{{ item.file.url }}" target="_blank" class="btn btn-sm btn-outline-secondary my-3">Читать книгу...</a>
+        </div>
+      </div>
+      </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock content %}

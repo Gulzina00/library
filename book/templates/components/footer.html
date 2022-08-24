@@ -1,0 +1,61 @@
+{% load static %}
+<div class=" p-2 bg-light">
+    <div class="row row-cols-4">
+      <div class="col"><div class="">
+        <a class="navbar-brand p-3" href="#">
+          <img src="{% static 'down/image/logo1.png'%}" alt="" width="70" height="70" class="d-inline-block align-text-top">
+        </a>
+      </div></div>
+      <div class="col">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="{% url 'books' %}">Книги</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="{% url 'category'  %}">Жанры</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="{% url 'authors' %}">Авторы</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="{% url 'aboute' %}">О нас</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Контакты</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">+996700800800</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">+996700700700</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">library@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Соц сети</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Instagram</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Telegram</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#">Facebook</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>

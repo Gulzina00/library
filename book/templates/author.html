@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="container">
+<div class="mb-3 m-5 shadow-none p-3 mb-5 bg-light rounded" style="max-width: 740px;">
+  {% for item in avtors %}
+    <div class="row p-4">
+      <div class="col-3">
+        {% if item.img_Avtor %}
+            <img src="{{ item.img_Avtor.url }}" class="img-fluid rounded-start" width="200px" alt="...">
+        {% else %}
+            <img src="{% static 'down/image/author.webp'%}" width="200px" class="img-fluid rounded-start" alt="...">
+        {% endif %}
+        <p class="text-center">({{ item.year_avtor}}г)</p>
+      </div>
+      <div class="col-9">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-text">{{ item.avtor }}</p> 
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %} <div class="container">
+  {% for item in avtors %}
+  <button type="button" class="btn btn-secondary mb-3">
+    Книги <span class="badge bg-primary"> {{ item.info.all.count}}</span>
+  </button>
+  <div class="card mb-3 m-5" style="max-width: 300px ;">
+    <div class="d-flex flex-row bd-highlight mb-3">
+    {% for tag in item.info.all %}
+          <div class="p-3">
+            {% if tag.image %}
+            <img src="{{ tag.image.url }}" class="img-fluid rounded-start" width="200px" alt="...">
+        {% else %}
+            <img src="{% static 'down/image/book.webp'%}" width="200px" class="img-fluid rounded-start" alt="...">
+        {% endif %}
+          <h6 class="text-decoration-none text-dark">{{ tag.title }}</h6> 
+          <p>{{ tag.year }}</p>
+          <p>{{ tag.content }}</p>
+            </div  
+          {% endfor %} 
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  </div> {% endcomment %}
+  
+  <div class="conatiner m-4">
+    <div class="row p-3">
+      {% for item in avtors %}
+      <button type="button" class="btn btn-secondary mb-3">
+        Книги <span class="badge bg-primary"> {{ item.info.all.count}}</span>
+      </button>
+      {% for tag in item.info.all %}
+      <div class="col-3">
+        <div class="card" style="width: 12rem;">
+          <img src="{{ tag.image.url }}" height="240px" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ tag.title }}</h5>
+          <a class="text-decoration-none text" href="#">год издания: {{ tag.year }}</a>
+          <h6 class="card-title">{{ tag.content }}</h6>
+      </div> 
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

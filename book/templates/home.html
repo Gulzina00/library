@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item carousel-item1 active">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Чтение книг — не способ бегства от жизни, книги дают ключ к ее пониманию. Ключ к реальности.</h5>
+              <p>Себастьян Фолкс</p>
+            </div>
+          </div>
+          <div class="carousel-item carousel-item2">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Чтение чрезвычайно помогает, а книги — хорошая компания, если взять самые подходящие.</h5>
+              <p>Луиза Мэй Олкотт</p>
+            </div>
+          </div>
+          <div class="carousel-item carousel-item3">
+            <div class="carousel-caption d-none d-md-block">
+              <h5> Я уверен: книгу ничто не заменит в будущем, так же как ничто не могло заменить её в прошлом.</h5>
+              <p>Айзек Азимов</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Предыдущий</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Следующий</span>
+        </button>
+      </div>
+
+      <div class="d-flex position-relative p-3">
+        <img src="{% static 'down/image/book-main.jpg'%}" class="img-fluid rounded-start" alt="...">
+        <div class="p-2">
+          <h5 class="mt-5">Почему электронные книги ещё не умерли?</h5>
+          <p>Электронные книги за последний десяток лет отошли на второй план. Отчасти потому что их заменили смартфоны, отчасти потому что люди перестали читать. Конечно, ведь ответы на все вопросы есть в интернете, а развлекать себя сериалами куда приятнее. Несколько месяцев назад в нашем распоряжении оказалась Amazon Kindle 2019 года 10-го поколения и это простое, но исчерпывающее устройство, навеяло некоторые мысли о таком почти забытом рынке цифровых книг.</p>
+          <a href="#" class="stretched-link">Подробнее</a>
+        </div>
+      </div>
+      
+
+      <div class="conatiner m-4">
+      <div class="row p-3">
+        <h4 class="text-primary">Новые</h4>
+        {% for item in home %}
+        <div class="col">
+          <div class="card" style="width: 12rem;">
+            <img src="{{ item.image.url }}" height="240px" class="card-img-top" alt="...">
+          </div>
+          <div class="card-body">
+          <h6><a href="{{ item.file.url }}" target="_blank" class=" btn-outline-secondary my-3">{{ item.title }}</a></h6>
+          <a class="text-decoration-none text" href="{% url 'avtors' id=item.author %}">{{ item.author }}</a>
+        </div> 
+        </div>
+        {% endfor %}
+      </div>
+    </div> 
+
+      {% endblock content %}
